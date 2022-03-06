@@ -1,0 +1,6 @@
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.

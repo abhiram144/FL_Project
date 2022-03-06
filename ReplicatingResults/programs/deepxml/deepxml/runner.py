@@ -8,6 +8,7 @@ import shutil
 import tools.evaluate as evalaute_one
 import tools.evaluate_ensemble as evaluate_ens
 
+innerDirectory = ""
 
 def create_surrogate_mapping(data_dir, g_config, seed):
     dataset = g_config['dataset']
@@ -120,7 +121,7 @@ def run_deepxml(work_dir, version, seed, config):
 
     # train intermediate representation
     args.mode = 'train'
-    args.arch = os.path.join(os.getcwd(), f'{arch}.json')
+    args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
     temp = data_stats['surrogate'].split(",")
     args.num_labels = int(temp[2])
     args.vocabulary_dims = int(temp[0])
@@ -141,7 +142,7 @@ def run_deepxml(work_dir, version, seed, config):
     os.makedirs(args.model_dir, exist_ok=True)
 
     args.mode = 'train'
-    args.arch = os.path.join(os.getcwd(), f'{arch}.json')
+    args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
     temp = data_stats['extreme'].split(",")
     args.num_labels = int(temp[2])
     args.vocabulary_dims = int(temp[0])
@@ -203,7 +204,7 @@ def run_deepxml(work_dir, version, seed, config):
         args.result_dir = os.path.join(result_dir, 'reranker')
 
         args.mode = 'train'
-        args.arch = os.path.join(os.getcwd(), f'{arch}.json')
+        args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
         temp = data_stats['extreme'].split(",")
         args.num_labels = int(temp[1])
         args.vocabulary_dims = int(temp[0])
@@ -277,7 +278,7 @@ def run_deepxml_ova(work_dir, version, seed, config):
         data_dir, g_config, seed)
 
     args.mode = 'train'
-    args.arch = os.path.join(os.getcwd(), f'{arch}.json')
+    args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
     temp = data_stats['extreme'].split(",")
     args.num_labels = int(temp[2])
     args.vocabulary_dims = int(temp[0])
@@ -337,7 +338,7 @@ def run_deepxml_ann(work_dir, version, seed, config):
         data_dir, g_config, seed)
 
     args.mode = 'train'
-    args.arch = os.path.join(os.getcwd(), f'{arch}.json')
+    args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
     temp = data_stats['extreme'].split(",")
     args.num_labels = int(temp[2])
     args.vocabulary_dims = int(temp[0])
@@ -413,8 +414,10 @@ if __name__ == "__main__":
     model_type = sys.argv[1]
     work_dir = sys.argv[2]
     version = sys.argv[3]
-    config = sys.argv[4]
+    config = f"{sys.argv[4]}/{model_type}/{version}.json"
     seed = sys.argv[5]
+    innerDirectory = sys.argv[6]
+
     if "," in seed:
         seeds = list(map(int, seed.split(",")))
         run_ensemble(

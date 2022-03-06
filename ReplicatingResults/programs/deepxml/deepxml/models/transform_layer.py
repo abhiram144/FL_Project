@@ -51,7 +51,7 @@ class Transform(nn.Module):
         eg {emb_size:300}
     """
 
-    def __init__(self, modules, device="cuda:0"):
+    def __init__(self, modules, device="cpu"):
         super(Transform, self).__init__()
         self.device = device
         if len(modules) == 1:
@@ -86,6 +86,7 @@ class Transform(nn.Module):
 
     def to(self):
         super().to(self.device)
+        #super().to()
 
     def get_token_embeddings(self):
         return self.transform.get_token_embeddings()

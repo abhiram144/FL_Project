@@ -1,0 +1,76 @@
+Loading training data.
+Loading validation data.
+Loading training data.
+Loading validation data.
+Loading training data.
+Loading validation data.
+Loading training data.
+Loading validation data.
+Loading training data.
+Loading validation data.
+Loading training data.
+Loading validation data.
+Epoch: 0, loss: 0.076467, time: 105.33 sec
+Model saved after epoch: 0
+P@1: 17.38, loss: 0.030772, time: 10.66 sec
+Epoch: 1, loss: 0.028168, time: 59.32 sec
+Epoch: 2, loss: 0.023732, time: 56.96 sec
+Epoch: 3, loss: 0.021059, time: 51.98 sec
+Epoch: 4, loss: 0.019185, time: 62.48 sec
+Epoch: 5, loss: 0.017775, time: 61.21 sec
+Model saved after epoch: 5
+P@1: 73.46, loss: 0.017047, time: 10.68 sec
+Epoch: 6, loss: 0.016578, time: 60.69 sec
+Epoch: 7, loss: 0.015651, time: 58.25 sec
+Epoch: 8, loss: 0.014759, time: 52.11 sec
+Epoch: 9, loss: 0.013957, time: 56.86 sec
+Epoch: 10, loss: 0.013312, time: 51.96 sec
+Model saved after epoch: 10
+P@1: 78.71, loss: 0.015282, time: 12.84 sec
+Epoch: 11, loss: 0.012646, time: 53.93 sec
+Epoch: 12, loss: 0.012098, time: 58.96 sec
+Epoch: 13, loss: 0.011533, time: 59.42 sec
+Adjusted learning rate to: 0.005
+Epoch: 14, loss: 0.010834, time: 52.82 sec
+Epoch: 15, loss: 0.010509, time: 57.51 sec
+Model saved after epoch: 15
+Purging network checkpoint: checkpoint_net_1.pkl
+P@1: 80.44, loss: 0.014864, time: 10.39 sec
+Epoch: 16, loss: 0.010232, time: 65.68 sec
+Epoch: 17, loss: 0.009945, time: 60.55 sec
+Epoch: 18, loss: 0.009731, time: 59.22 sec
+Epoch: 19, loss: 0.009490, time: 51.33 sec
+Purging network checkpoint: checkpoint_net_6.pkl
+Training time: 1196.57 sec, Validation time: 44.57 sec, Shortlist time: 0.00 sec, Model size: 7.24 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/surrogate/model_network.pkl
+Loading training data.
+Loading validation data.
+Epoch: 0, loss: 0.076467, time: 50.53 sec
+Model saved after epoch: 0
+P@1: 17.38, loss: 0.030772, time: 9.87 sec
+Loading training data.
+Loading validation data.
+Epoch: 0, loss: 0.076467, time: 50.16 sec
+Model saved after epoch: 0
+P@1: 17.38, loss: 0.030772, time: 9.72 sec
+Epoch: 1, loss: 0.028168, time: 51.46 sec
+Training time: 101.62 sec, Validation time: 9.72 sec, Shortlist time: 0.00 sec, Model size: 7.24 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/surrogate/model_network.pkl
+Loading training data.
+Loading validation data.
+Epoch: 0, loss: 0.076467, time: 49.27 sec
+Model saved after epoch: 0
+P@1: 17.38, loss: 0.030772, time: 9.95 sec
+Epoch: 1, loss: 0.028168, time: 57.83 sec
+Training time: 107.11 sec, Validation time: 9.95 sec, Shortlist time: 0.00 sec, Model size: 7.24 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/surrogate/model_network.pkl
+Loading training data.
+Loading validation data.
+Epoch: 0, loss: 0.076467, time: 53.53 sec
+Model saved after epoch: 0
+P@1: 17.38, loss: 0.030772, time: 9.25 sec
+Epoch: 1, loss: 0.028168, time: 55.25 sec
+Training time: 108.78 sec, Validation time: 9.25 sec, Shortlist time: 0.00 sec, Model size: 7.24 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/surrogate/model_network.pkl
+Loading training data.
+Loading validation data.

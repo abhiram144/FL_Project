@@ -26,7 +26,7 @@ class MLP(nn.Module):
     device: str, default="cuda:0"
         keep on this device
     """
-    def __init__(self, input_size, hidden_size, nnl='relu', device="cuda:0"):
+    def __init__(self, input_size, hidden_size, nnl='relu', device="cpu"):
         super(MLP, self).__init__()
         hidden_size = self.parse_hidden_size(hidden_size)
         assert len(hidden_size) >= 1, "Should contain atleast 1 hidden layer"

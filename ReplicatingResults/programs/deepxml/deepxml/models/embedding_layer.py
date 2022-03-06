@@ -42,7 +42,7 @@ class Embedding(torch.nn.Module):
     def __init__(self, num_embeddings, embedding_dim, padding_idx=None,
                  max_norm=None, norm_type=2, scale_grad_by_freq=False,
                  sparse=False, reduction=True, pretrained_weights=None,
-                 device="cuda:0"):
+                 device="cpu"):
         super(Embedding, self).__init__()
         self.num_embeddings = num_embeddings
         self.embedding_dim = embedding_dim

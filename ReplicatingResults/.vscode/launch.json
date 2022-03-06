@@ -12,7 +12,8 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "python": "${command:python.interpreterPath}"
+            //"args": ["0", "DeepXML", "EURLex-4K", "0", "108"]
+            "args": ["DeepXML", "${workspaceFolder}", "EURLex-4K", "${relativeFileDirname}/configs", "108", "${fileDirname}"]
         }
     ]
 }

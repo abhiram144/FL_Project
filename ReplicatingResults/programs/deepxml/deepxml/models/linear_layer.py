@@ -23,7 +23,7 @@ class Linear(nn.Module):
     """
 
     def __init__(self, input_size, output_size,
-                 bias=True, device="cuda:0"):
+                 bias=True, device="cpu"):
         super(Linear, self).__init__()
         self.device = device  # Useful in case of multiple GPUs
         self.input_size = input_size
@@ -101,7 +101,7 @@ class SparseLinear(Linear):
     """
 
     def __init__(self, input_size, output_size, padding_idx=None,
-                 bias=True, device="cuda:0"):
+                 bias=True, device="cpu"):
         self.padding_idx = padding_idx
         super(SparseLinear, self).__init__(
             input_size=input_size,
