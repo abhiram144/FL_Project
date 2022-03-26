@@ -8,7 +8,6 @@ from tqdm import tqdm
 
 import torch as th
 from torchvision import datasets, transforms
-from opacus import PrivacyEngine 
 
 
 hook = sy.TorchHook(torch) 

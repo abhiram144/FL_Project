@@ -84,3 +84,6 @@ P@k (knn): 60.72,51.65,45.24,39.68,35.63 (clf): 35.39,29.54,25.66,22.89,20.39 (e
 Epoch: 1, loss: 26.285934, time: 36.41 sec
 Training time: 80.10 sec, Validation time: 7.31 sec, Shortlist time: 20.27 sec, Model size: 41.83 MB
 Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/extreme/model_network.pkl
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
