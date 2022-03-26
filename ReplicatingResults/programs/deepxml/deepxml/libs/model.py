@@ -63,10 +63,10 @@ class ModelShortlist(ModelBase):
         """
         Compute loss for one classifier
         """
-        _true = _true.to(_pred.get_device())
-        if _mask is not None:
-            _mask = _mask.to(_true.get_device())
-        return self.criterion(_pred, _true, _mask).to(self.devices[-1])
+        #_true = _true.to(_pred.get_device())
+        #if _mask is not None:
+        #    _mask = _mask.to(_true.get_device())
+        return self.criterion(_pred, _true, _mask) #.to(self.devices[-1])
 
     def _compute_loss(self, out_ans, batch_data, weightage=1.0):
         """

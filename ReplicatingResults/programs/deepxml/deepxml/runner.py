@@ -146,6 +146,7 @@ def run_deepxml(work_dir, version, seed, config):
     temp = data_stats['extreme'].split(",")
     args.num_labels = int(temp[2])
     args.vocabulary_dims = int(temp[0])
+    
     _train_time, _model_size = main(args)
     train_time += _train_time
     model_size += _model_size

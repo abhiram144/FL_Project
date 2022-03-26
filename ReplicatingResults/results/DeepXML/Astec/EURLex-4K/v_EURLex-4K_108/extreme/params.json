@@ -1,0 +1,12 @@
+{
+    "ann_method": "hnsw",
+    "arch": "/home/gate/Desktop/FL_Project/ReplicatingResults/programs/deepxml/deepxml/run_scripts/Astec.json",
+    "embedding_dims": 300,
+    "keep_invalid": false,
+    "label_padding_index": 3786,
+    "num_clf_partitions": 1,
+    "num_labels": 3786,
+    "num_nbrs": 500,
+    "use_shortlist": true,
+    "vocabulary_dims": 5000
+}

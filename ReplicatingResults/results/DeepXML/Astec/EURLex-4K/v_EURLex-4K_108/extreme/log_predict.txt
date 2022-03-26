@@ -1,0 +1,15 @@
+Loading test data.
+Fetching shortlist.
+Using the default encoder.
+Prediction time (total): 19.37 sec., Prediction time (per sample): 5.09 msec., P@k(%): (knn): 60.72,51.64,45.17,39.58,35.61 (clf): 40.72,35.38,30.53,27.23,24.59 (ens): 45.16,39.05,34.67,31.11,28.46
+Loading test data.
+Fetching shortlist.
+Using the default encoder.
+Loading test data.
+Fetching shortlist.
+Using the default encoder.
+Prediction time (total): 15.11 sec., Prediction time (per sample): 3.97 msec., P@k(%): (knn): 60.72,51.65,45.24,39.68,35.63 (clf): 41.17,35.57,30.94,27.37,24.73 (ens): 45.60,39.33,35.12,31.20,28.55
+Loading test data.
+Fetching shortlist.
+Using the default encoder.
+Prediction time (total): 72.72 sec., Prediction time (per sample): 4.68 msec., P@k(%): (knn): 62.64,55.22,49.33,44.20,40.12 (clf): 41.98,36.41,32.06,28.32,25.65 (ens): 46.43,40.60,36.13,32.39,29.77

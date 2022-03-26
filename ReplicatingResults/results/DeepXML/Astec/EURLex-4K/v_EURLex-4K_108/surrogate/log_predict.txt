@@ -4,3 +4,17 @@ Prediction time (total): 9.02 sec.,Prediction time (per sample): 2.37 msec., P@k
 Prediction time (total): 11.42 sec.,Prediction time (per sample): 3.00 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
 Prediction time (total): 11.42 sec.,Prediction time (per sample): 3.00 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
 Prediction time (total): 9.64 sec.,Prediction time (per sample): 2.53 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 10.40 sec.,Prediction time (per sample): 2.73 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 9.52 sec.,Prediction time (per sample): 2.50 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 10.29 sec.,Prediction time (per sample): 2.70 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 8.17 sec.,Prediction time (per sample): 2.14 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 7.66 sec.,Prediction time (per sample): 2.01 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 8.27 sec.,Prediction time (per sample): 2.17 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 8.70 sec.,Prediction time (per sample): 2.28 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 8.62 sec.,Prediction time (per sample): 2.26 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 7.75 sec.,Prediction time (per sample): 2.03 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 8.01 sec.,Prediction time (per sample): 2.10 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 7.94 sec.,Prediction time (per sample): 2.09 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 8.35 sec.,Prediction time (per sample): 2.19 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 8.21 sec.,Prediction time (per sample): 2.16 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64
+Prediction time (total): 5.71 sec.,Prediction time (per sample): 1.50 msec., P@k(%): (clf): 44.24,37.29,33.01,29.57,26.64

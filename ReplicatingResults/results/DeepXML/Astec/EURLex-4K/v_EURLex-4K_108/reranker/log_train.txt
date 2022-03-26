@@ -1,0 +1,10 @@
+Loading training data.
+Loading validation data.
+Updating shortlist at epoch: 0
+ANN train time: 0.00 sec
+Epoch: 0, loss: 15.700162, time: 43.78 sec
+Model saved after epoch: 0
+P@k (knn): 41.17,35.57,30.94,27.37,24.73 (clf): 34.65,29.48,25.99,23.27,21.02 (ens): 41.06,34.85,30.68,26.97,24.61, loss: 10.263508, time: 13.10 sec
+Epoch: 1, loss: 11.112793, time: 44.60 sec
+Training time: 88.39 sec, Validation time: 13.10 sec, Shortlist time: 0.00 sec, Model size: 10.65 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/reranker/model_network.pkl
