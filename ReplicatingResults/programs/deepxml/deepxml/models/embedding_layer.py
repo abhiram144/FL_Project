@@ -1,3 +1,4 @@
+import numpy
 import torch
 from torch.nn.parameter import Parameter
 import torch.nn.functional as F
@@ -81,10 +82,19 @@ class Embedding(torch.nn.Module):
     def to(self):
         super().to(self.device)
 
+    def loopSum(self, x, w):
+        #x_new = x.numpy()
+        #w_new = w.numpy()
+        for i in range(x.shape[2]):
+            x[:,:,i] = x[:, :, i] * w
+        return x
+
     def _reduce_sum(self, x, w):
         if w is None:
             return torch.sum(x, dim=1)
         else:
+            x = self.loopSum(x, w)
+            return torch.sum(x, dim=1)
             return torch.sum(x * w.unsqueeze(2), dim=1)
 
     def _reduce_mean(self, x, w):

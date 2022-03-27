@@ -61,6 +61,7 @@ class Astec(nn.Module):
         if x_ind is None:  # Assume embedding is pre-computed
             return x
         else:
+            #return x
             return self.embeddings(x_ind, x)
 
     def forward(self, x):
