@@ -93,7 +93,7 @@ class Embedding(torch.nn.Module):
         if w is None:
             return torch.sum(x, dim=1)
         else:
-            if(x.shape[0] * x.shape[1] * x.shape[2] > 122859000):
+            if(x.shape[0] >= 700):
                 x = self.loopSum(x, w)
                 return torch.sum(x, dim=1)
             else:
