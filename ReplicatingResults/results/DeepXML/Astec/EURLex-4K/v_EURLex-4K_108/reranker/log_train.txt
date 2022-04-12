@@ -8,3 +8,20 @@ P@k (knn): 41.17,35.57,30.94,27.37,24.73 (clf): 34.65,29.48,25.99,23.27,21.02 (e
 Epoch: 1, loss: 11.112793, time: 44.60 sec
 Training time: 88.39 sec, Validation time: 13.10 sec, Shortlist time: 0.00 sec, Model size: 10.65 MB
 Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/reranker/model_network.pkl
+Loading training data.
+Loading validation data.
+Updating shortlist at epoch: 0
+ANN train time: 0.00 sec
+Loading training data.
+Loading validation data.
+Updating shortlist at epoch: 0
+ANN train time: 0.00 sec
+Loading training data.
+Loading validation data.
+Updating shortlist at epoch: 0
+ANN train time: 0.00 sec
+Epoch: 0, loss: 14.798584, time: 56.85 sec
+Model saved after epoch: 0
+P@k (knn): 10.37,9.35,8.36,7.38,6.69 (clf): 26.62,21.91,18.72,16.19,14.29 (ens): 26.52,21.58,18.36,15.88,14.06, loss: 8.180274, time: 10.69 sec
+Training time: 56.85 sec, Validation time: 10.69 sec, Shortlist time: 0.00 sec, Model size: 10.65 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/reranker/model_network.pkl

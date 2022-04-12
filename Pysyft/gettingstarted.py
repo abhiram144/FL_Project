@@ -26,7 +26,7 @@ class Arguments():
         self.no_cuda = False
         self.seed = 1
         self.log_interval = 10
-        self.save_model = False
+        self.save_model = True
 
 args = Arguments()
 

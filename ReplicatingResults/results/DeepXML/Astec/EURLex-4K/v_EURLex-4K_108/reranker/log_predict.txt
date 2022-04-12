@@ -1,3 +1,6 @@
 Loading test data.
 Fetching shortlist.
 Prediction time (total): 6.37 sec., Prediction time (per sample): 1.67 msec., P@k(%): (knn): 41.17,35.57,30.94,27.37,24.73 (clf): 55.29,47.31,41.44,36.63,32.55 (ens): 54.92,47.58,41.78,37.01,33.02
+Loading test data.
+Fetching shortlist.
+Prediction time (total): 10.25 sec., Prediction time (per sample): 2.69 msec., P@k(%): (knn): 10.37,9.35,8.36,7.38,6.69 (clf): 26.62,21.91,18.72,16.19,14.29 (ens): 26.52,21.58,18.36,15.88,14.06

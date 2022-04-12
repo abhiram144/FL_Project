@@ -87,3 +87,141 @@ Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML
 Loading training data.
 Computing and reusing intermediate document embeddings to save computations.
 Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading validation data.
+Updating shortlist at epoch: 0
+Using pre-trained embeddings for shortlist.
+Using the default encoder.
+ANN train time: 75.80 sec
+Epoch: 0, loss: 81.347159, time: 54.61 sec
+Model saved after epoch: 0
+P@k (knn): 66.68,57.36,50.63,45.25,40.97 (clf): 10.79,9.56,8.32,7.66,7.27 (ens): 52.35,42.83,36.70,31.78,28.14, loss: 26.830289, time: 52.26 sec
+Training time: 54.61 sec, Validation time: 52.26 sec, Shortlist time: 75.80 sec, Model size: 41.83 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/extreme/model_network.pkl
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading validation data.
+Updating shortlist at epoch: 0
+Using pre-trained embeddings for shortlist.
+Using the default encoder.
+ANN train time: 77.47 sec
+Epoch: 0, loss: 81.327112, time: 52.77 sec
+Model saved after epoch: 0
+P@k (knn): 66.76,57.34,50.67,45.24,41.01 (clf): 13.21,10.44,9.38,8.09,7.67 (ens): 52.56,43.24,37.04,32.15,28.41, loss: 26.841563, time: 56.56 sec
+Training time: 52.77 sec, Validation time: 56.56 sec, Shortlist time: 77.47 sec, Model size: 41.83 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/extreme/model_network.pkl
+Loading training data.
+Computing and reusing intermediate document embeddings to save computations.
+Using the default encoder.
+Loading validation data.
+Updating shortlist at epoch: 0
+Using pre-trained embeddings for shortlist.
+Using the default encoder.
+ANN train time: 67.91 sec
+Epoch: 0, loss: 81.230091, time: 55.40 sec
+Model saved after epoch: 0
+P@k (knn): 66.53,57.36,50.60,45.25,40.99 (clf): 10.48,9.48,8.74,7.79,7.16 (ens): 50.93,42.47,36.36,31.64,28.02, loss: 26.827226, time: 13.85 sec
+Training time: 55.40 sec, Validation time: 13.85 sec, Shortlist time: 67.91 sec, Model size: 41.83 MB
+Saving model at: /home/gate/Desktop/FL_Project/ReplicatingResults/models/DeepXML/Astec/EURLex-4K/v_EURLex-4K_108/extreme/model_network.pkl

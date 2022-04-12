@@ -1,0 +1,4 @@
+
+python3 programs/deepxml/deepxml/runner.py DeepXML /home2/abhiram.d/Fed_new AmazonCat-13K programs/deepxml/deepxml/configs 108 /home2/abhiram.d/Fed_new/programs/deepxml/deepxml
+
+https://blog.openmined.org/federated-learning-additive-secret-sharing-pysyft/
