@@ -93,11 +93,11 @@ class Embedding(torch.nn.Module):
         if w is None:
             return torch.sum(x, dim=1)
         else:
-            if(x.shape[0] >= 700):
-                x = self.loopSum(x, w)
-                return torch.sum(x, dim=1)
-            else:
-                return torch.sum(x * w.unsqueeze(2), dim=1)
+            #if(x.shape[0] >= 700):
+            #    x = self.loopSum(x, w)
+            #    return torch.sum(x, dim=1)
+            #else:
+            return torch.sum(x * w.unsqueeze(2), dim=1)
 
     def _reduce_mean(self, x, w):
         if w is None:

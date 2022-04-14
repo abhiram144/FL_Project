@@ -642,7 +642,7 @@ class ModelBase(object):
             "Prediction time (per sample): {:.2f} msec., P@k(%): {:s}".format(
                 prediction_time,
                 avg_prediction_time, _res))
-        return predicted_labels, prediction_time, avg_prediction_time
+        return predicted_labels, prediction_time, avg_prediction_time, acc
 
     def _predict(self, data_loader, top_k, **kwargs):
         """

@@ -13,6 +13,7 @@ import main
 import shutil
 import tools.evaluate as evalaute_one
 import tools.evaluate_ensemble as evaluate_ens
+import runner
 
 DEVICE: str = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -94,10 +95,12 @@ class DeepXMLClient(fl.client.NumPyClient):
             self.version = f"{version}_{seed}"
         self.innerDirectory = innerDirectory
         self.data_dir = os.path.join(self.work_dir, 'data')
-        
-        self.args = self.GetParamsObject()
-        self.args.mode = 'CreateModel'
-        self.model = main.main(self.args)
+        runner.innerDirectory = self.innerDirectory
+
+        #self.args = self.GetParamsObject()
+        #self.args.mode = 'CreateModel'
+
+        self.model = runner.run_deepxml_init(self.work_dir, self.version, self.seed, self.config)
         dataset = self.config['global']['dataset']
         self.filter_fname = os.path.join(self.data_dir, dataset, 'filter_labels_test.txt')
     
@@ -134,127 +137,20 @@ class DeepXMLClient(fl.client.NumPyClient):
         # Return model parameters as a list of NumPy ndarrays
         return [val.cpu().numpy() for _, val in self.model.net.state_dict().items()]
 
-    def set_parameters(self, parameters_model: List[np.ndarray]) -> None:
+    def set_parameters(self, parameters: List[np.ndarray]) -> None:
         # Set model parameters from a list of NumPy ndarrays
-        state_dict = OrderedDict({k: torch.tensor(v) for k, v in zip(self.model.net.state_dict().keys(), parameters_model)})
-        
+        state_dict = OrderedDict({k: torch.tensor(v) for k, v in zip(self.model.net.state_dict().keys(), parameters)})
         self.model.net.load_state_dict(state_dict, strict=True)
-        g_config = self.config['global']
-        dataset = g_config['dataset']
-        arch = g_config['arch']
-        _args = parameters.Parameters("Parameters")
-        _args.parse_args()
-        _args.params.seed = self.seed
-        _args.update(self.config['extreme'])
-        args = _args.params
-        args.surrogate_mapping = None
-        result_dir = os.path.join(
-        self.work_dir, 'results', 'DeepXML', arch, dataset, f'v_{self.version}')
-        model_dir = os.path.join(
-            self.work_dir, 'models', 'DeepXML', arch, dataset, f'v_{self.version}')
-        params = args
-        data_dir = self.data_dir
-        data={'X': None, 'Y': None}
-        learning_rate=params.learning_rate
-        num_epochs=params.num_epochs
-        trn_feat_fname=params.trn_feat_fname
-        val_feat_fname=params.val_feat_fname
-        trn_label_fname=params.trn_label_fname
-        val_label_fname=params.val_label_fname
-        batch_size=params.batch_size
-        feature_type=params.feature_type
-        num_workers=params.num_workers
-        normalize_features=params.normalize
-        normalize_labels=params.nbn_rel
-        shuffle=params.shuffle
-        validate=params.validate
-        beta=params.beta
-        init_epoch=params.last_epoch
-        keep_invalid=params.keep_invalid
-        shortlist_method=params.shortlist_method
-        validate_after=params.validate_after
-        feature_indices=params.feature_indices
-        use_intermediate_for_shorty=params.use_intermediate_for_shorty
-        label_indices=params.label_indices
-        trn_pretrained_shortlist = None
-        val_pretrained_shortlist = None
-        trn_pretrained_shortlist=trn_pretrained_shortlist
-        val_pretrained_shortlist=val_pretrained_shortlist
-        surrogate_mapping=params.surrogate_mapping
-        args.model_dir = os.path.join(model_dir, 'extreme')
-        args.result_dir = os.path.join(result_dir, 'extreme')
-        self.model.model_dir = args.model_dir
-        self.model.shortlist_size = args.num_nbrs
-        os.makedirs(args.result_dir, exist_ok=True)
-        os.makedirs(args.model_dir, exist_ok=True)
-        self.model._create_dataset(
-            os.path.join(data_dir, dataset),
-            fname_features=trn_feat_fname,
-            fname_labels=trn_label_fname,
-            data=data,
-            mode='train',
-            keep_invalid=keep_invalid,
-            normalize_features=normalize_features,
-            size_shortlist=self.model.shortlist_size,
-            normalize_labels=normalize_labels,
-            feature_indices=feature_indices,
-            shortlist_method=shortlist_method,
-            feature_type=feature_type,
-            label_indices=label_indices,
-            surrogate_mapping=surrogate_mapping,
-            pretrained_shortlist=trn_pretrained_shortlist,
-            _type='shortlist'
-        )
-
-
-        self.model.save(args.model_dir, 'model')
+        #self.model.save()
 
     def fit(
         self, parameters: List[np.ndarray], config: Dict[str, str]
     ) -> Tuple[List[np.ndarray], int, Dict]:
         # Set model parameters, train model, return updated model parameters
-        # train intermediate representation
-        train_time = 0
-        model_size = 0
-        avg_prediction_time = 0
-        _args = libs.parameters.Parameters("Parameters")
-        config = self.config
-        _args.parse_args()
-        _args.update(config['global'])
-        _args.update(config['surrogate'])
-        _args.params.seed = self.seed
-        args = self.args
-        args.mode = 'train'
-        args.arch = self.arch
-        temp = self.data_stats['surrogate'].split(",")
-        args.num_labels = int(temp[2])
-        args.vocabulary_dims = int(temp[0])
-        #_train_time, model_size, _modelTrained_1 = main.main(args)
-        #train_time += _train_time
-        _args.update(config['extreme'])
-        args = _args.params
-        args.surrogate_mapping = None
-        args.model_dir = os.path.join(self.model_dir, 'extreme')
-        args.result_dir = os.path.join(self.result_dir, 'extreme')
-        os.makedirs(args.result_dir, exist_ok=True)
-        os.makedirs(args.model_dir, exist_ok=True)
-
-        args.mode = 'train'
-        args.arch = self.arch
-        temp = self.data_stats['extreme'].split(",")
-        args.num_labels = int(temp[2])
-        args.vocabulary_dims = int(temp[0])
-        args.data_dir = self.data_dir
-        
-        _train_time, _model_size, _modeltrained_2 = main.main(args)
-        train_time += _train_time
-        model_size += _model_size
-
-
-
-        #self.set_parameters(parameters)
-
-        return self.get_parameters(), 2000, {}
+        self.set_parameters(parameters)
+        #cifar.train(self.model, self.trainloader, epochs=1, device=DEVICE)
+        self.model.net = runner.run_one_epoch(self.work_dir, self.version, self.seed, self.config, self.model)
+        return self.get_parameters(), self.num_examples["trainset"], {}
 
     def evaluate(
         self, parameters: List[np.ndarray], config: Dict[str, str]
@@ -262,34 +158,8 @@ class DeepXMLClient(fl.client.NumPyClient):
         # Set model parameters, evaluate model on local test dataset, return result
         self.set_parameters(parameters)
         #loss, accuracy = cifar.test(self.model, self.testloader, device=DEVICE)
-        #return float(loss), self.num_examples["testset"], {"accuracy": float(accuracy)}
-        _args = libs.parameters.Parameters("Parameters")
-        config = self.config
-        _args.parse_args()
-        _args.update(config['global'])
-        _args.update(config['surrogate'])
-        _args.params.seed = self.seed
-        args = self.args
-        args.mode = 'train'
-        args.arch = self.arch
-        temp = self.data_stats['surrogate'].split(",")
-        args.num_labels = int(temp[2])
-        args.vocabulary_dims = int(temp[0])
-        #_train_time, model_size, _modelTrained_1 = main.main(args)
-        #train_time += _train_time
-        _args.update(config['extreme'])
-        args = _args.params
-        args.surrogate_mapping = None
-        args.model_dir = os.path.join(self.model_dir, 'extreme')
-        args.result_dir = os.path.join(self.result_dir, 'extreme')
-        args.pred_fname = 'tst_predictions'
-        args.mode = 'predict'
-        args.data_dir = self.data_dir
-        predicted_labels, prediction_time, _avg_pred_time, stats = main.main(args)
-        maxAccuracy = 0
-        for k,v in stats.items():
-            maxAccuracy = max(maxAccuracy, max(v[0]))
-        return (float(0),predicted_labels, stats)
+        output = runner.Evaluate(self.work_dir, self.version, self.seed, self.config, self.model)
+        return float(0), 222, {"accuracy": float(70)}
 
 
 
@@ -304,7 +174,7 @@ def main_function() -> None:
     # Start client
     client = DeepXMLClient(model_type, work_dir, version, config, seed, innerDirectory)
     client.set_parameters(client.get_parameters())
-    #client.fit(client.get_parameters(), {})
+    client.fit(client.get_parameters(), {})
     client.evaluate(client.get_parameters(), {})
     fl.client.start_numpy_client("0.0.0.0:8080", client)
 
