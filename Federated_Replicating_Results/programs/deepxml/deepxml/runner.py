@@ -295,11 +295,11 @@ def run_deepxml_init(work_dir, version, seed, config):
     _train_time, _, _modelTrained_inter = main(args)
     train_time += _train_time
 
-    ## performance on surrogate task
-    #args.mode = 'predict'
-    #main(args)
+    # ## performance on surrogate task
+    # #args.mode = 'predict'
+    # #main(args)
 
-    # train final representation and extreme classifiers
+    # # train final representation and extreme classifiers
     _args.update(config['extreme'])
     args = _args.params
     args.surrogate_mapping = None
@@ -318,67 +318,67 @@ def run_deepxml_init(work_dir, version, seed, config):
     train_time += _train_time
     model_size += _model_size
 
-    # # predict using extreme classifiers
-    # args.pred_fname = 'tst_predictions'
-    # args.mode = 'predict'
-    # _, _, _pred_time, stats = main(args)
-    # avg_prediction_time += _pred_time
+    # # # predict using extreme classifiers
+    # # args.pred_fname = 'tst_predictions'
+    # # args.mode = 'predict'
+    # # _, _, _pred_time, stats = main(args)
+    # # avg_prediction_time += _pred_time
 
-    # # copy the prediction files to level-1
-    # shutil.copy(
-    #     os.path.join(result_dir, 'extreme', 'tst_predictions_clf.npz'),
-    #     os.path.join(result_dir, 'tst_predictions_clf.npz'))
-    # shutil.copy(
-    #     os.path.join(result_dir, 'extreme', 'tst_predictions_knn.npz'),
-    #     os.path.join(result_dir, 'tst_predictions_knn.npz'))
+    # # # copy the prediction files to level-1
+    # # shutil.copy(
+    # #     os.path.join(result_dir, 'extreme', 'tst_predictions_clf.npz'),
+    # #     os.path.join(result_dir, 'tst_predictions_clf.npz'))
+    # # shutil.copy(
+    # #     os.path.join(result_dir, 'extreme', 'tst_predictions_knn.npz'),
+    # #     os.path.join(result_dir, 'tst_predictions_knn.npz'))
 
-    # # evaluate
-    # pred_fname = os.path.join(result_dir, 'tst_predictions')
-    # ans = evaluate(
-    #     g_config=g_config,
-    #     data_dir=data_dir,
-    #     pred_fname=pred_fname,
-    #     filter_fname=filter_fname,
-    #     betas=[0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.75, 0.90])
-    # f_rstats = os.path.join(result_dir, 'log_eval.txt')
-    # with open(f_rstats, "w") as fp:
-    #     fp.write(ans)
+    # # # evaluate
+    # # pred_fname = os.path.join(result_dir, 'tst_predictions')
+    # # ans = evaluate(
+    # #     g_config=g_config,
+    # #     data_dir=data_dir,
+    # #     pred_fname=pred_fname,
+    # #     filter_fname=filter_fname,
+    # #     betas=[0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.75, 0.90])
+    # # f_rstats = os.path.join(result_dir, 'log_eval.txt')
+    # # with open(f_rstats, "w") as fp:
+    # #     fp.write(ans)
 
     # run re-ranker
-    if use_reranker:
-        args.get_only = 'clf'
-        args.tst_feat_fname = args.trn_feat_fname
-        args.tst_label_fname = args.trn_label_fname
-        args.pred_fname = "trn_predictions"
+    # if use_reranker:
+    #     args.get_only = 'clf'
+    #     args.tst_feat_fname = args.trn_feat_fname
+    #     args.tst_label_fname = args.trn_label_fname
+    #     args.pred_fname = "trn_predictions"
 
-        os.makedirs(os.path.join(result_dir, 'reranker'), exist_ok=True)
-        os.makedirs(os.path.join(model_dir, 'reranker'), exist_ok=True)
+    #     os.makedirs(os.path.join(result_dir, 'reranker'), exist_ok=True)
+    #     os.makedirs(os.path.join(model_dir, 'reranker'), exist_ok=True)
 
-        # predict on train set
-        _, _train_time, _, stats = main(args)
-        train_time += _train_time
-        shutil.copy(
-             os.path.join(result_dir, 'extreme', 'trn_predictions_clf.npz'),
-             os.path.join(model_dir, 'reranker', 'trn_shortlist.npz'))
-        shutil.copy(
-             os.path.join(result_dir, 'extreme', 'tst_predictions_clf.npz'),
-             os.path.join(model_dir, 'reranker', 'tst_shortlist.npz'))
+    #     # predict on train set
+    #     _, _train_time, stats = main(args)
+    #     train_time += _train_time
+    #     shutil.copy(
+    #          os.path.join(result_dir, 'extreme', 'trn_predictions_clf.npz'),
+    #          os.path.join(model_dir, 'reranker', 'trn_shortlist.npz'))
+    #     shutil.copy(
+    #          os.path.join(result_dir, 'extreme', 'tst_predictions_clf.npz'),
+    #          os.path.join(model_dir, 'reranker', 'tst_shortlist.npz'))
 
-        _args.update(config['global'])
-        _args.update(config['reranker'])
-        args = _args.params
-        args.num_nbrs = args.top_k
-        args.model_dir = os.path.join(model_dir, 'reranker')
-        args.result_dir = os.path.join(result_dir, 'reranker')
+    #     _args.update(config['global'])
+    #     _args.update(config['reranker'])
+    #     args = _args.params
+    #     args.num_nbrs = args.top_k
+    #     args.model_dir = os.path.join(model_dir, 'reranker')
+    #     args.result_dir = os.path.join(result_dir, 'reranker')
 
-        args.mode = 'train'
-        args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
-        temp = data_stats['extreme'].split(",")
-        args.num_labels = int(temp[1])
-        args.vocabulary_dims = int(temp[0])
-        _train_time, _model_size, _modelTrained_rerank = main(args)
-        train_time += _train_time
-        model_size += _model_size
+    #     args.mode = 'train'
+    #     args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
+    #     temp = data_stats['extreme'].split(",")
+    #     args.num_labels = int(temp[1])
+    #     args.vocabulary_dims = int(temp[0])
+    #     _train_time, _model_size, _modelTrained_rerank = main(args)
+    #     train_time += _train_time
+    #     model_size += _model_size
     return _modeltrained_final
 
     #     # re-rank the predictions using the re-ranker
@@ -491,101 +491,7 @@ def run_one_epoch(work_dir, version, seed, config, model):
     train_time += _train_time
     model_size += _model_size
 
-    # # predict using extreme classifiers
-    # args.pred_fname = 'tst_predictions'
-    # args.mode = 'predict'
-    # _, _, _pred_time, stats = main(args)
-    # avg_prediction_time += _pred_time
-
-    # # copy the prediction files to level-1
-    # shutil.copy(
-    #     os.path.join(result_dir, 'extreme', 'tst_predictions_clf.npz'),
-    #     os.path.join(result_dir, 'tst_predictions_clf.npz'))
-    # shutil.copy(
-    #     os.path.join(result_dir, 'extreme', 'tst_predictions_knn.npz'),
-    #     os.path.join(result_dir, 'tst_predictions_knn.npz'))
-
-    # # evaluate
-    # pred_fname = os.path.join(result_dir, 'tst_predictions')
-    # ans = evaluate(
-    #     g_config=g_config,
-    #     data_dir=data_dir,
-    #     pred_fname=pred_fname,
-    #     filter_fname=filter_fname,
-    #     betas=[0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.75, 0.90])
-    # f_rstats = os.path.join(result_dir, 'log_eval.txt')
-    # with open(f_rstats, "w") as fp:
-    #     fp.write(ans)
-
-
-
-    # run re-ranker
-    # if use_reranker:
-    #     args.get_only = 'clf'
-    #     args.tst_feat_fname = args.trn_feat_fname
-    #     args.tst_label_fname = args.trn_label_fname
-    #     args.pred_fname = "trn_predictions"
-
-    #     os.makedirs(os.path.join(result_dir, 'reranker'), exist_ok=True)
-    #     os.makedirs(os.path.join(model_dir, 'reranker'), exist_ok=True)
-
-    #     # predict on train set
-    #     _, _train_time, _, stats = main(args)
-    #     train_time += _train_time
-    #     shutil.copy(
-    #          os.path.join(result_dir, 'extreme', 'trn_predictions_clf.npz'),
-    #          os.path.join(model_dir, 'reranker', 'trn_shortlist.npz'))
-    #     shutil.copy(
-    #          os.path.join(result_dir, 'extreme', 'tst_predictions_clf.npz'),
-    #          os.path.join(model_dir, 'reranker', 'tst_shortlist.npz'))
-
-    #     _args.update(config['global'])
-    #     _args.update(config['reranker'])
-    #     args = _args.params
-    #     args.num_nbrs = args.top_k
-    #     args.model_dir = os.path.join(model_dir, 'reranker')
-    #     args.result_dir = os.path.join(result_dir, 'reranker')
-
-    #     args.mode = 'train'
-    #     args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
-    #     temp = data_stats['extreme'].split(",")
-    #     args.num_labels = int(temp[1])
-    #     args.vocabulary_dims = int(temp[0])
-    #     _train_time, _model_size, _modelTrained = main(args)
-    #     train_time += _train_time
-    #     model_size += _model_size
-
-
-    #     # re-rank the predictions using the re-ranker
-    #     args.mode = 'predict'
-    #     args.get_only = 'ens'
-    #     args.pred_fname = 'tst_predictions_reranker'
-    #     _, _ , _pred_time, stats = main(args)
-    #     avg_prediction_time += _pred_time
-    #     shutil.copy(
-    #         os.path.join(result_dir, 'reranker',
-    #                     'tst_predictions_reranker_ens.npz'),
-    #         os.path.join(result_dir, 'tst_predictions_reranker_clf.npz'))
-
-    #     shutil.copy(
-    #         os.path.join(result_dir, 'tst_predictions_knn.npz'),
-    #         os.path.join(result_dir, 'tst_predictions_reranker_knn.npz'))
-
-    #     pred_fname = os.path.join(
-    #         result_dir, f'tst_predictions_reranker')
-    #     ans = evaluate(
-    #         g_config=g_config,
-    #         data_dir=data_dir,
-    #         filter_fname=filter_fname,
-    #         pred_fname=pred_fname,
-    #         betas=[0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.75, 0.90])
-    #     with open(f_rstats, 'a') as fp:
-    #         fp.write("\nRe-ranker\n\n")
-    #         fp.write(ans)
-    # print_run_stats(train_time, model_size, avg_prediction_time, f_rstats)
-    #return os.path.join(result_dir, f"score_{g_config['beta']:.2f}.npz"), \
-    #    train_time, model_size, avg_prediction_time
-    return _modeltrained
+    return _modeltrained, args.num_labels
 
 def Evaluate(work_dir, version, seed, config, model):
 
@@ -685,73 +591,9 @@ def Evaluate(work_dir, version, seed, config, model):
     f_rstats = os.path.join(result_dir, 'log_eval.txt')
     with open(f_rstats, "w") as fp:
         fp.write(ans)
-
-    # run re-ranker
-    if use_reranker:
-        args.get_only = 'clf'
-        args.tst_feat_fname = args.trn_feat_fname
-        args.tst_label_fname = args.trn_label_fname
-        args.pred_fname = "trn_predictions"
-
-        os.makedirs(os.path.join(result_dir, 'reranker'), exist_ok=True)
-        #os.makedirs(os.path.join(model_dir, 'reranker'), exist_ok=True)
-
-        # predict on train set
-        _, _train_time, _, stats = main(args)
-        train_time += _train_time
-        shutil.copy(
-            os.path.join(result_dir, 'extreme', 'trn_predictions_clf.npz'),
-            os.path.join(model_dir, 'reranker', 'trn_shortlist.npz'))
-        shutil.copy(
-            os.path.join(result_dir, 'extreme', 'tst_predictions_clf.npz'),
-            os.path.join(model_dir, 'reranker', 'tst_shortlist.npz'))
-
-        _args.update(config['global'])
-        _args.update(config['reranker'])
-        args = _args.params
-        args.num_nbrs = args.top_k
-        args.model_dir = os.path.join(model_dir, 'reranker')
-        args.result_dir = os.path.join(result_dir, 'reranker')
-
-        args.mode = 'train'
-        args.arch = os.path.join(innerDirectory, f'run_scripts/{arch}.json')
-        temp = data_stats['extreme'].split(",")
-        args.num_labels = int(temp[1])
-        args.vocabulary_dims = int(temp[0])
-        #_train_time, _model_size, _modelTrained = main(args)
-        #train_time += _train_time
-        #model_size += _model_size
-
-
-        # re-rank the predictions using the re-ranker
-        args.mode = 'predict'
-        args.get_only = 'ens'
-        args.pred_fname = 'tst_predictions_reranker'
-        _, _ , _pred_time, stats = main(args)
-        avg_prediction_time += _pred_time
-        shutil.copy(
-            os.path.join(result_dir, 'reranker',
-                        'tst_predictions_reranker_ens.npz'),
-            os.path.join(result_dir, 'tst_predictions_reranker_clf.npz'))
-
-        shutil.copy(
-            os.path.join(result_dir, 'tst_predictions_knn.npz'),
-            os.path.join(result_dir, 'tst_predictions_reranker_knn.npz'))
-
-        pred_fname = os.path.join(
-            result_dir, f'tst_predictions_reranker')
-        ans = evaluate(
-            g_config=g_config,
-            data_dir=data_dir,
-            filter_fname=filter_fname,
-            pred_fname=pred_fname,
-            betas=[0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.75, 0.90])
-        with open(f_rstats, 'a') as fp:
-            fp.write("\nRe-ranker\n\n")
-            fp.write(ans)
+    
     print_run_stats(train_time, model_size, avg_prediction_time, f_rstats)
-    return os.path.join(result_dir, f"score_{g_config['beta']:.2f}.npz"), \
-        train_time, model_size, avg_prediction_time, stats
+    return train_time, model_size, avg_prediction_time, stats
 
 
 

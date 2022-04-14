@@ -101,8 +101,11 @@ class DeepXMLClient(fl.client.NumPyClient):
         #self.args.mode = 'CreateModel'
 
         self.model = runner.run_deepxml_init(self.work_dir, self.version, self.seed, self.config)
-        dataset = self.config['global']['dataset']
-        self.filter_fname = os.path.join(self.data_dir, dataset, 'filter_labels_test.txt')
+        #self.args = self.GetParamsObject()
+
+        #dataset = self.config['global']['dataset']
+        #self.filter_fname = os.path.join(self.data_dir, dataset, 'filter_labels_test.txt')
+        #print("afasdfadf")
     
     def GetParamsObject(self):
         g_config = self.config['global']
@@ -149,8 +152,8 @@ class DeepXMLClient(fl.client.NumPyClient):
         # Set model parameters, train model, return updated model parameters
         self.set_parameters(parameters)
         #cifar.train(self.model, self.trainloader, epochs=1, device=DEVICE)
-        self.model.net = runner.run_one_epoch(self.work_dir, self.version, self.seed, self.config, self.model)
-        return self.get_parameters(), self.num_examples["trainset"], {}
+        self.model, numExamples = runner.run_one_epoch(self.work_dir, self.version, self.seed, self.config, self.model)
+        return self.get_parameters(), numExamples, {}
 
     def evaluate(
         self, parameters: List[np.ndarray], config: Dict[str, str]
@@ -158,8 +161,12 @@ class DeepXMLClient(fl.client.NumPyClient):
         # Set model parameters, evaluate model on local test dataset, return result
         self.set_parameters(parameters)
         #loss, accuracy = cifar.test(self.model, self.testloader, device=DEVICE)
-        output = runner.Evaluate(self.work_dir, self.version, self.seed, self.config, self.model)
-        return float(0), 222, {"accuracy": float(70)}
+        train_time, model_size, avg_prediction_time, stats = runner.Evaluate(self.work_dir, self.version, self.seed, self.config, self.model)
+        maxAccuracy = 0
+        for k,v in stats.items():
+            maxAccuracy = max(maxAccuracy, max(v[0]))
+        return float(24.5), int(maxAccuracy), {}
+        return float(24.5), int(maxAccuracy), {"train_time": float(train_time), "model_size" : model_size, "avg_prediction_time" : avg_prediction_time}
 
 
 
@@ -173,9 +180,10 @@ def main_function() -> None:
     innerDirectory = sys.argv[6]
     # Start client
     client = DeepXMLClient(model_type, work_dir, version, config, seed, innerDirectory)
-    client.set_parameters(client.get_parameters())
+    # client.set_parameters(client.get_parameters())
     client.fit(client.get_parameters(), {})
-    client.evaluate(client.get_parameters(), {})
+    #client.evaluate(client.get_parameters(), {})
+    print("Ready for Federated Learning ......")
     fl.client.start_numpy_client("0.0.0.0:8080", client)
 
 if __name__ == '__main__':

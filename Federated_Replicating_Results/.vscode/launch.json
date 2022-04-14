@@ -5,7 +5,7 @@
     //python3 programs/deepxml/deepxml/runner.py DeepXML /home2/abhiram.d/ReplicatingResults EURLex-4K /home2/abhiram.d/ReplicatingResults/programs/deepxml/deepxml/configs 108 /home2/abhiram.d/ReplicatingResults/programs/deepxml/deepxml
     //Run Local
     //python3 programs/deepxml/deepxml/FederatedClient.py DeepXML /home/gate/Desktop/FL_Project/Federated_Replicating_Results EURLex-4K programs/deepxml/deepxml/configs 108 /home/gate/Desktop/FL_Project/Federated_Replicating_Results/programs/deepxml/deepxml/ 
-    //python3 programs/deepxml/deepxml/FederatedClient.py DeepXML /home/ayushi/FL_Project/Federated_Replicating_Results EURLex-4K programs/deepxml/deepxml/configs 108 /home/ayushi/FL_Project/Federated_Replicating_Results/programs/deepxml/deepxml/ 
+    //python3 programs/deepxml/deepxml/FederatedClientV2.py DeepXML /home/ayushi/FL_Project/Federated_Replicating_Results EURLex-4K programs/deepxml/deepxml/configs 108 /home/ayushi/FL_Project/Federated_Replicating_Results/programs/deepxml/deepxml/ 
     "version": "0.2.0",
     "configurations": [
         
