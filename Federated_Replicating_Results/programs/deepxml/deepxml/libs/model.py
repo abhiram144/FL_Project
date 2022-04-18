@@ -7,6 +7,7 @@ from .features import DenseFeatures
 from xclib.utils.matrix import SMatrix
 from xclib.utils.sparse import sigmoid
 from tqdm import tqdm
+from opacus import PrivacyEngine
 
 
 class ModelFull(ModelBase):
@@ -58,6 +59,9 @@ class ModelShortlist(ModelBase):
         self.label_indices = params.label_indices
         self.retrain_hnsw_after = params.retrain_hnsw_after
         self.update_shortlist = params.update_shortlist
+        self.criterion = criterion
+        self.optimizer = optimizer
+        self.params = params
 
     def _compute_loss_one(self, _pred, _true, _mask):
         """
@@ -515,6 +519,15 @@ class ModelShortlist(ModelBase):
                 classifier_type='shortlist',
                 batch_size=batch_size,
                 num_workers=num_workers)
+
+        # privacy_engine = PrivacyEngine()
+        # model, optimizer, train_loader = privacy_engine.make_private(
+        #         module=model,
+        #         optimizer=self.optimizer,
+        #         noise_multiplier=0.01,
+        #         max_grad_norm=0.1,
+        #     )
+        
         self._fit(
             train_loader, validation_loader, model_dir, result_dir,
             init_epoch, num_epochs, validate_after, beta,

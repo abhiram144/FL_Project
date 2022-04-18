@@ -165,8 +165,8 @@ class DeepXMLClient(fl.client.NumPyClient):
         maxAccuracy = 0
         for k,v in stats.items():
             maxAccuracy = max(maxAccuracy, max(v[0]))
-        return float(24.5), int(maxAccuracy), {}
-        return float(24.5), int(maxAccuracy), {"train_time": float(train_time), "model_size" : model_size, "avg_prediction_time" : avg_prediction_time}
+        #return float(24.5), int(maxAccuracy), {}
+        return float(24.5), int(maxAccuracy * 100), {"avg_prediction_time" : avg_prediction_time}
 
 
 
@@ -181,10 +181,13 @@ def main_function() -> None:
     # Start client
     client = DeepXMLClient(model_type, work_dir, version, config, seed, innerDirectory)
     # client.set_parameters(client.get_parameters())
-    client.fit(client.get_parameters(), {})
+    #client.fit(client.get_parameters(), {})
     #client.evaluate(client.get_parameters(), {})
     print("Ready for Federated Learning ......")
     fl.client.start_numpy_client("0.0.0.0:8080", client)
+    #return client
+
+
 
 if __name__ == '__main__':
     main_function()

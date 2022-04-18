@@ -7,9 +7,11 @@ import libs.utils as utils
 import models.network as network
 import libs.shortlist as shortlist
 import libs.model as model_utils
-import libs.optimizer as optimizer
+import libs.optimizer as optimizer_lib
 import libs.sampling as sampling
 import libs.loss as loss
+from opacus import PrivacyEngine
+
 
 
 __author__ = 'KD'
@@ -394,7 +396,7 @@ def main(params):
             params.label_padding_index = params.num_labels
         net = construct_network(params)
         criterion = construct_loss(params)
-        opt = optimizer.Optimizer(
+        opt = optimizer_lib.Optimizer(
             opt_type=params.optim,
             learning_rate=params.learning_rate,
             momentum=params.momentum,
@@ -423,7 +425,7 @@ def main(params):
         criterion = construct_loss(params)
         print("Model parameters: ", params)
         print("\nModel configuration: ", net)
-        opt = optimizer.Optimizer(
+        opt = optimizer_lib.Optimizer(
             opt_type=params.optim,
             learning_rate=params.learning_rate,
             momentum=params.momentum,
@@ -431,6 +433,13 @@ def main(params):
         opt.construct(net)
         shorty = construct_shortlist(params)
         model = construct_model(params, net, criterion, opt, shorty)
+        # model, optimizer, data_loader = PrivacyEngine.make_private(
+        #                                 module=model,
+        #                                 optimizer=opt,
+        #                                 data_loader=data_loader,
+        #                                 noise_multiplier=1.1,
+        #                                 max_grad_norm=1.0)
+        
         model.transfer_to_devices()
         output = train(model, params)
         fname = os.path.join(params.result_dir, 'params.json')

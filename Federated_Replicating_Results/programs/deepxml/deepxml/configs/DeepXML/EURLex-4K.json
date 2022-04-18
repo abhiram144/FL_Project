@@ -81,5 +81,10 @@
         "update_shortlist": false,
         "use_pretrained_shortlist": true,
         "embeddings": "fasttextB_embeddings_300d.npy"
+    },
+    "PrivacyEngine" : 
+    {
+        "noise_multiplier" : 0.01,
+        "max_grad_norm" : 0.01
     }
 }
