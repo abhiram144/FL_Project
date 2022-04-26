@@ -520,13 +520,7 @@ class ModelShortlist(ModelBase):
                 batch_size=batch_size,
                 num_workers=num_workers)
 
-        # privacy_engine = PrivacyEngine()
-        # model, optimizer, train_loader = privacy_engine.make_private(
-        #         module=model,
-        #         optimizer=self.optimizer,
-        #         noise_multiplier=0.01,
-        #         max_grad_norm=0.1,
-        #     )
+        
         
         self._fit(
             train_loader, validation_loader, model_dir, result_dir,
