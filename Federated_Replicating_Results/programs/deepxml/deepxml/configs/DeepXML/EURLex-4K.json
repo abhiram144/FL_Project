@@ -6,7 +6,7 @@
         "arch": "Astec",
         "A": 0.55,
         "B": 1.5,
-        "use_reranker": true,
+        "use_reranker": false,
         "surrogate_threshold": 1024,
         "surrogate_method": 1,
         "embedding_dims": 300,
@@ -21,7 +21,7 @@
         "tst_feat_fname": "tst_X_Xf.txt"
     },
     "surrogate": {
-        "num_epochs": 1,
+        "num_epochs": 10,
         "dlr_factor": 0.5,
         "learning_rate": 0.01,
         "batch_size": 255,
@@ -34,7 +34,7 @@
         "save_intermediate": true
     },
     "extreme": {
-        "num_epochs": 1,
+        "num_epochs": 10,
         "dlr_factor": 0.5,
         "learning_rate": 0.007,
         "batch_size": 255,
