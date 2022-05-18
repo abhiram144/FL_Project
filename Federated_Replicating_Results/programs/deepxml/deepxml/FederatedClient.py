@@ -71,7 +71,7 @@ def evaluate(g_config, data_dir, pred_fname, filter_fname=None, betas=-1, n_lear
     return ans
 
 class DeepXMLClient(fl.client.NumPyClient):
-    """Flower client implementing CIFAR-10 image classification using
+    """Flower client implementing Extreme classification using
     PyTorch."""
     def __init__(
         self,
