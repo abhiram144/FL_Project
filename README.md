@@ -1,6 +1,6 @@
 # Federated Learning over DeepXML
 
-Code for FL_DeepXML: A Deep Extreme Multi-Label Learning Framework Applied to Short Text Documents_
+Code for FL_DeepXML: A Fdederated Deep Extreme Multi-Label Learning Framework Applied to Short Text Documents_
 
 ---
 
@@ -65,6 +65,9 @@ DeepXML supports multiple feature architectures such as Bag-of-embedding/Astec, 
 perl convert_format.pl $data_dir/train.txt $data_dir/trn_X_Xf.txt $data_dir/trn_X_Y.txt
 perl convert_format.pl $data_dir/test.txt $data_dir/tst_X_Xf.txt $data_dir/tst_X_Y.txt
 ```
+
+### Split the original data into two parts
+`python DataSplitter.py testFile.txt half1.txt half2.txt`
 
 ## Example use cases
 
